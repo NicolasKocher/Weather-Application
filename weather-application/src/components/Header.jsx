@@ -39,48 +39,73 @@ function Header() {
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
 
   const [temperatureCelsius, setTemperatureCelsius] = useState(null)
+  const [humidity, setHumidity] = useState(null)
+  const [weatherIcon, setWeatherIcon] = useState(null)
+  const [windSpeed, setWindSpeed] = useState(null)
+  const [cloud, setCloud] = useState(null)
 
   useEffect(() => {
-    // Eine HTTP-GET-Anfrage an die API senden
-    fetch(apiUrl)
-    .then((response) => {
-      // Überprüfen, ob die Antwort erfolgreich ist (HTTP-Statuscode 200)
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      // Die Antwort als JSON-Promis parsen
-      return response.json();
-    })
-    .then((data) => {
-      // Hier haben Sie Zugriff auf die Daten von der API
-
-      // Beispiel: Die Temperatur aus den API-Daten extrahieren
-      const temperatureKelvin = data.main.temp;
-      const temperatureCelsius = Math.floor((temperatureKelvin - 273.15));
-      setTemperatureCelsius(temperatureCelsius)
-    })
-    .catch((error) => {
-      console.error('Fehler beim Abrufen der API-Daten:', error);
-    });
-  }, [])
+    const fetchData = () => {
+      fetch(apiUrl)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Temperature
+        const temperatureKelvin = data.main.temp;
+        const temperatureCelsius = Math.floor((temperatureKelvin - 273.15));
+        setTemperatureCelsius(temperatureCelsius);
   
+        // Humidity
+        const humidity = data.main.humidity;
+        setHumidity(humidity);
+  
+        // Weather Icon
+        const weatherIcon = data.weather.icon;
+        setWeatherIcon(weatherIcon);
+  
+        // Wind speed
+        const windSpeed = Math.floor(data.wind.speed * 3.6);
+        setWindSpeed(windSpeed);
+  
+        // Cloudiness in %
+        const cloud = data.clouds.all;
+        setCloud(cloud);
+      })
+      .catch((error) => {
+        console.error('Fehler beim Abrufen der API-Daten:', error);
+      });
+    };
 
+    fetchData();
+
+    const intervalID = setInterval(fetchData, 300000);
     
-  
+    return () => clearInterval(intervalID)
+
+    }, [])
+      
+
   return (
     <header className="header">
-      <img src={weatherImage} alt="Weather-image" className="weather-image"/>
-      <h1>{temperatureCelsius}°C</h1>
-      <div>
-        <p>Niederschlag: 10%</p>
-        <p>Luftfeuche: 89%</p>
-        <p>Wind: 6km/h</p>
+      <div className="temperature-container">
+        <img src={weatherImage} alt="Weather-image" className="weather-image"/>
+        <h1>{temperatureCelsius}°C</h1>
       </div>
-      <div>
+      <div className="weather-data">
+        <p>Wolken: {cloud}%</p>
+        <p>Luftfeuche: {humidity}%</p>
+        <p>Wind: {windSpeed} km/h</p>
+      </div>
+      <div className="time-container">
         <h2>Wetter</h2>
-        <h3>{currentDayOfWeek}</h3>
-        <h3>{currentHours < 10 ? `0${currentHours}` : currentHours}:
-          {currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes}</h3>
+        <h4>{currentDayOfWeek}</h4>
+        <h4>{currentHours < 10 ? `0${currentHours}` : currentHours}:
+            {currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes}
+        </h4>
       </div>
       
     </header>
