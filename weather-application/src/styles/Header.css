@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+}
+
+.weather-image {
+  width: 100px;
+  height: 100px;
+}
