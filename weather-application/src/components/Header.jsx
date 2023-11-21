@@ -13,10 +13,24 @@ function Header() {
   const currentDayOfWeekIndex = currentDateAndTime.getDay();
   const currentDayOfWeek = daysOfWeek[currentDayOfWeekIndex];
 
-  // Die aktuelle Uhrzeit anzeigen (z.B., "15:30:00 GMT+0000 (Coordinated Universal Time)")
-  const currentTimeHours = currentDateAndTime.getHours();
-  const currentTimeMinutes = currentDateAndTime.getMinutes();  
+  const [currentMinutes, setCurrentMinutes] = useState(currentDateAndTime.getMinutes());
+  const [currentHours, setCurrentHours] = useState(currentDateAndTime.getHours());
 
+  const updateMinutes = () => {setCurrentMinutes(new Date().getMinutes());}
+  const updateHours = () => {setCurrentHours(new Date().getHours())}
+
+  useEffect(() => {
+    const minutesIntervalId = setInterval(updateMinutes, 2000);
+    const hoursIntervalId = setInterval(updateHours, 2000);
+
+    return () => {
+      clearInterval(minutesIntervalId);
+      clearInterval(hoursIntervalId);
+    }
+  }, [])
+
+
+  // Wetter API 
   const apiKey = 'ac38eaac6b1fe46460c2813b9d7b964d';
   const latitude = 49.419393;
   const longitude = 11.132510;
@@ -65,7 +79,8 @@ function Header() {
       <div>
         <h2>Wetter</h2>
         <h3>{currentDayOfWeek}</h3>
-        <h3>{currentTimeHours}:{currentTimeMinutes} </h3>
+        <h3>{currentHours < 10 ? `0${currentHours}` : currentHours}:
+          {currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes}</h3>
       </div>
       
     </header>
