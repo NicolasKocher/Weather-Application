@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../styles/Header.css"
 import weatherImage from "../assets/weather-example.png"
+import useGeolocation from "../components/Geolocation";
 
 
 function Header() {
@@ -29,11 +30,45 @@ function Header() {
     }
   }, [])
 
+  // TODO
+  const { coords } = useGeolocation();
+  // 49.419463, 11.132484
+   // Initialize state from local storage or default to null
+   const [latitude, setLatitude] = useState(() => {
+    const savedLatitude = localStorage.getItem('latitude');
+    return savedLatitude ? Number(savedLatitude) : null;
+  });
+
+  const [longitude, setLongitude] = useState(() => {
+    const savedLongitude = localStorage.getItem('longitude');
+    return savedLongitude ? Number(savedLongitude) : null;
+  });
+
+
+  useEffect(() => {
+    if (coords) {
+      setLatitude(coords.latitude);
+      setLongitude(coords.longitude);
+
+      localStorage.setItem('latitude', coords.latitude);
+      localStorage.setItem('longitude', coords.longitude);
+      console.log(latitude)
+      console.log(longitude)
+    }
+  }, [coords]);
+
+  useEffect(() => {
+    // Retrieve coordinates from local storage on component mount
+    const savedLatitude = localStorage.getItem('latitude');
+    const savedLongitude = localStorage.getItem('longitude');
+    if (savedLatitude && savedLongitude) {
+      setLatitude(Number(savedLatitude));
+      setLongitude(Number(savedLongitude));
+    }
+  }, []);
 
   // Wetter API 
   const apiKey = 'ac38eaac6b1fe46460c2813b9d7b964d';
-  const latitude = 49.419393;
-  const longitude = 11.132510;
 
   // Die URL für die API-Anfrage zusammenstellen
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
@@ -45,46 +80,48 @@ function Header() {
   const [cloud, setCloud] = useState(null)
 
   useEffect(() => {
-    const fetchData = () => {
-      fetch(apiUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // Temperature
-        const temperatureKelvin = data.main.temp;
-        const temperatureCelsius = Math.floor((temperatureKelvin - 273.15));
-        setTemperatureCelsius(temperatureCelsius);
-  
-        // Humidity
-        const humidity = data.main.humidity;
-        setHumidity(humidity);
-  
-        // Weather Icon
-        const weatherIcon = data.weather.icon;
-        setWeatherIcon(weatherIcon);
-  
-        // Wind speed
-        const windSpeed = Math.floor(data.wind.speed * 3.6);
-        setWindSpeed(windSpeed);
-  
-        // Cloudiness in %
-        const cloud = data.clouds.all;
-        setCloud(cloud);
-      })
-      .catch((error) => {
-        console.error('Fehler beim Abrufen der API-Daten:', error);
-      });
-    };
-
-    fetchData();
-
-    const intervalID = setInterval(fetchData, 300000);
+    if (latitude !== null && longitude !== null) {
+      const fetchData = () => {
+        fetch(apiUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          // Temperature
+          const temperatureKelvin = data.main.temp;
+          const temperatureCelsius = Math.floor((temperatureKelvin - 273.15));
+          setTemperatureCelsius(temperatureCelsius);
     
-    return () => clearInterval(intervalID)
+          // Humidity
+          const humidity = data.main.humidity;
+          setHumidity(humidity);
+    
+          // Weather Icon
+          const weatherIcon = data.weather.icon;
+          setWeatherIcon(weatherIcon);
+    
+          // Wind speed
+          const windSpeed = Math.floor(data.wind.speed * 3.6);
+          setWindSpeed(windSpeed);
+    
+          // Cloudiness in %
+          const cloud = data.clouds.all;
+          setCloud(cloud);
+        })
+        .catch((error) => {
+          console.error('Fehler beim Abrufen der API-Daten:', error);
+        });
+      };
+  
+      fetchData();
+  
+      const intervalID = setInterval(fetchData, 300000);
+      
+      return () => clearInterval(intervalID)
+    }
 
     }, [])
       
