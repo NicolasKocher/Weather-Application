@@ -4,8 +4,8 @@ This project is a weather application built with React, providing real-time weat
 
 ## Features
 
-- Search and display weather information by city name.
-- Show details like temperature, humidity, wind speed, and weather conditions.
+- Search and display weather information by geoLocation (latitude dn longitude).
+- Show details like temperature, humidity, wind speed, and weather forecast for the next 5 days.
 - Responsive design for mobile and desktop devices.
 
 ## Live Demo
