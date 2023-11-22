@@ -11,7 +11,7 @@ This project is a weather application built with React, providing real-time weat
 ## Live Demo
 
 You can see a demo of the application here: 
-![Alt-Text für das Bild](/assets/demo.png)
+![Demo](/src/assets/demo.png)
 
 ## Getting Started
 
