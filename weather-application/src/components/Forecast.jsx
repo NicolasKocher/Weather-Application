@@ -58,12 +58,14 @@ const Forecast = () => {
                   className="weather-icon"
                 />
               }
-              <li className="single-forecast">
-                Min: {dayData.min.toFixed(1)}°C
-              </li>
-              <li className="single-forecast">
-                Max: {dayData.max.toFixed(1)}°C
-              </li>
+              <div className="min-max-container">
+                <li className="single-forecast">
+                  {Math.floor(dayData.min.toFixed(1))}°
+                </li>
+                <li className="single-forecast">
+                  {Math.floor(dayData.max.toFixed(1))}°
+                </li>
+              </div>
             </div>
           ))}
         </ul>

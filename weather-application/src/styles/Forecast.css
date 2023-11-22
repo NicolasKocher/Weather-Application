@@ -10,12 +10,16 @@
 
 .single-forecast, .single-forecast-day {
   list-style-type: none;
-  width: 80px;
+  width: 50px;
   padding: 10px;
 }
 .single-forecast-day {
   font-weight: bold;
   color: #EC6E4C;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
   
 }
 .whole-forecast-container {
@@ -25,4 +29,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.min-max-container {
+  display: flex;
+  margin: 0;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 18px;
 }
