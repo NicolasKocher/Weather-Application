@@ -14,18 +14,25 @@ const Forecast = () => {
 
       fetch(url)
         .then(response => response.json())
-        .then(data => {
+        .then(responseData => {
           const dailyData = {};
           
-          data.list.forEach((item) => {
+          responseData.list.forEach((item) => {
             const date = new Date(item.dt * 1000);
             const day = date.toLocaleDateString('de-DE', { weekday: 'long' });
-            
+
             if (!dailyData[day]) {
-              dailyData[day] = { min: item.main.temp_min, max: item.main.temp_max };
+              dailyData[day] = { 
+                min: item.main.temp_min, 
+                max: item.main.temp_max,
+                icon: item.weather[0].icon // Extrahiert den Icon-Code
+              };
             } else {
               dailyData[day].min = Math.min(dailyData[day].min, item.main.temp_min);
               dailyData[day].max = Math.max(dailyData[day].max, item.main.temp_max);
+              if (!dailyData[day].icon) {
+                dailyData[day].icon = item.weather[0].icon; // Stellt sicher, dass ein Icon-Code gesetzt wird, falls noch nicht vorhanden
+              }
             }
           });
 
@@ -37,13 +44,27 @@ const Forecast = () => {
 
   return (
     <div>
-      <h2>Wettervorhersage</h2>
       {forecast.length > 0 ? (
         <ul className="forecast-container">
-          {forecast.map(([day, temps], index) => (
-            <li key={index} className="single-forecast">
-              {day} - Min: {temps.min.toFixed(1)}°C, Max: {temps.max.toFixed(1)}°C
-            </li>
+          {forecast.map(([day, dayData], index) => (
+            <div key={index} className="whole-forecast-container">
+              <li className="single-forecast-day">
+                {day}
+              </li>
+              {dayData.icon && 
+                <img 
+                  src={`http://openweathermap.org/img/wn/${dayData.icon}@2x.png`} 
+                  alt="Wettericon"
+                  className="weather-icon"
+                />
+              }
+              <li className="single-forecast">
+                Min: {dayData.min.toFixed(1)}°C
+              </li>
+              <li className="single-forecast">
+                Max: {dayData.max.toFixed(1)}°C
+              </li>
+            </div>
           ))}
         </ul>
       ) : (

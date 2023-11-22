@@ -1,9 +1,28 @@
 .forecast-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 30px;
+  gap: 20px;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 50px ;
+  justify-content: center;
+  align-items: center;
 }
 
-.single-forecast {
-  background-color: aliceblue;
+.single-forecast, .single-forecast-day {
+  list-style-type: none;
+  width: 80px;
+  padding: 10px;
+}
+.single-forecast-day {
+  font-weight: bold;
+  color: #EC6E4C;
+  
+}
+.whole-forecast-container {
+  background-color: white; /* Background color of the box */
+  box-shadow: 5px 3px 10px 0px rgba(0, 0, 0, 0.3); /* Shadow effect */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

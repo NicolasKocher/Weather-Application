@@ -52,8 +52,6 @@ function Header() {
 
       localStorage.setItem('latitude', coords.latitude);
       localStorage.setItem('longitude', coords.longitude);
-      console.log(latitude)
-      console.log(longitude)
     }
   }, [coords]);
 
@@ -75,7 +73,7 @@ function Header() {
 
   const [temperatureCelsius, setTemperatureCelsius] = useState(null)
   const [humidity, setHumidity] = useState(null)
-  const [weatherIcon, setWeatherIcon] = useState(null)
+  const [weatherIcon, setWeatherIcon] = useState("")
   const [windSpeed, setWindSpeed] = useState(null)
   const [cloud, setCloud] = useState(null)
 
@@ -100,8 +98,10 @@ function Header() {
           setHumidity(humidity);
     
           // Weather Icon
-          const weatherIcon = data.weather.icon;
-          setWeatherIcon(weatherIcon);
+          let weatherIcon = data.weather[0].icon;
+          weatherIcon = weatherIcon.slice(0, -1) + 'd'; // Ersetzt das letzte Zeichen durch 'd'
+          setWeatherIcon(`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`);
+          console.log(weatherIcon);
     
           // Wind speed
           const windSpeed = Math.floor(data.wind.speed * 3.6);
@@ -129,7 +129,7 @@ function Header() {
   return (
     <header className="header">
       <div className="temperature-container">
-        <img src={weatherImage} alt="Weather-image" className="weather-image"/>
+        {weatherIcon && <img src={weatherIcon} alt="Aktuelles Wetterbild" className="weather-image"/>}
         <h1>{temperatureCelsius}°C</h1>
       </div>
       <div className="weather-data">

@@ -2,7 +2,7 @@
   width: auto;
   height: 400px;
   padding: 30px;
-  
+  min-width: 1070px;
   box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.5);
 
 }
