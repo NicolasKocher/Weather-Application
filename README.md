@@ -10,7 +10,7 @@ It is my first React Project and also my first time working with an API.
 - Responsive design for mobile and desktop devices.
 - Updates frequently
 
-## Live Demo
+## Demo
 
 You can see a demo of the application here: 
 ![Demo](/src/assets/demo.png)
