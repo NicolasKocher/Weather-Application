@@ -22,7 +22,7 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 - Node.js installed on your local machine.
-- A package manager like npm or yarn.
+- A package manager like npm
 
 ### Installation
 
