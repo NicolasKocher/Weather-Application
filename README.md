@@ -4,9 +4,10 @@ This project is a weather application built with React, providing real-time weat
 
 ## Features
 
-- Search and display weather information by geoLocation (latitude dn longitude).
+- Search and display weather information by geoLocation (latitude and longitude).
 - Show details like temperature, humidity, wind speed, and weather forecast for the next 5 days.
 - Responsive design for mobile and desktop devices.
+- Updates frequently
 
 ## Live Demo
 
@@ -27,3 +28,14 @@ To get a local copy up and running follow these simple steps.
 1. Clone the repository:
    ```sh
    git clone https://github.com/your-github-username/weather-application.git
+
+2. Install NPM packages:
+   ```sh
+   npm install
+   npm run dev
+
+3. Open Localhost to view in the browser
+
+## Contact
+[Nicolas Kocher](https://www.linkedin.com/in/nicolaskocher/)
+[Project](https://github.com/NicolasKocher/Weather-Application)
