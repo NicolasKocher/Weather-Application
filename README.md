@@ -38,5 +38,6 @@ To get a local copy up and running follow these simple steps.
 3. Open Localhost to view in the browser
 
 ## Contact
-[Nicolas Kocher](https://www.linkedin.com/in/nicolaskocher/)
+[Nicolas Kocher](https://www.linkedin.com/in/nicolaskocher/) 
+
 [Project](https://github.com/NicolasKocher/Weather-Application)
