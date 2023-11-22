@@ -63,7 +63,7 @@ const Forecast = () => {
                   {Math.floor(dayData.min.toFixed(1))}°
                 </li>
                 <li className="single-forecast">
-                  {Math.floor(dayData.max.toFixed(1))}°
+                  {Math.ceil(dayData.max.toFixed(1))}°
                 </li>
               </div>
             </div>
