@@ -33,9 +33,12 @@ To get a local copy up and running follow these simple steps.
 2. Install NPM packages:
    ```sh
    npm install
+
+3. Run it
+   ```sh
    npm run dev
 
-3. Open Localhost to view in the browser
+4. Open Localhost to view in the browser
 
 ## Contact
 [Nicolas Kocher](https://www.linkedin.com/in/nicolaskocher/) 
