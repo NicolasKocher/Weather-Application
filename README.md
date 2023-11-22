@@ -1,6 +1,7 @@
 # Weather Application
 
 This project is a weather application built with React, providing real-time weather data for any location. It uses the [OpenWeatherMap API](https://openweathermap.org/api) to fetch weather details.
+It is my first React Project and also my first time working with an API.
 
 ## Features
 
