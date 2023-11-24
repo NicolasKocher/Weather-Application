@@ -134,7 +134,7 @@ function Header() {
       </div>
       <div className="weather-data">
         <p>Wolken: {cloud}%</p>
-        <p>Luftfeuche: {humidity}%</p>
+        <p>Luftfeuchtigkeit: {humidity}%</p>
         <p>Wind: {windSpeed} km/h</p>
       </div>
       <div className="time-container">

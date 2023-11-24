@@ -39,11 +39,13 @@ const Forecast = () => {
           setForecast(Object.entries(dailyData).slice(0, 5));
         })
         .catch(error => console.error("Fehler beim Abrufen der Wetterdaten: ", error));
+
     }
   }, [coords]);
 
   return (
     <div>
+      <h1 className="weather-forecast-text">Wettervorhersage</h1>
       {forecast.length > 0 ? (
         <ul className="forecast-container">
           {forecast.map(([day, dayData], index) => (

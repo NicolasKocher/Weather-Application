@@ -1,7 +1,7 @@
 .header {
   display: flex;
   font-family: 'Roboto', sans-serif;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .weather-image {
@@ -43,15 +43,6 @@
 .time-container h2 {
   margin-bottom: 10px;
   color: #EC6E4C;
-}
-
-@media (max-width: 1100px) {
-  
-}
-
-/* Further adjustment for even smaller screens */
-@media (max-width: 650px) {
-  
 }
 
 /* For very small screens, like mobile phones */
