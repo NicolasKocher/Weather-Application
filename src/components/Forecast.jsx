@@ -45,7 +45,7 @@ const Forecast = () => {
 
   return (
     <div>
-      <h1 className="weather-forecast-text">Test</h1>
+      <h1 className="weather-forecast-text">Wettervorhersage</h1>
       {forecast.length > 0 ? (
         <ul className="forecast-container">
           {forecast.map(([day, dayData], index) => (
