@@ -44,3 +44,30 @@
   margin-bottom: 10px;
   color: #EC6E4C;
 }
+
+@media (max-width: 1100px) {
+  
+}
+
+/* Further adjustment for even smaller screens */
+@media (max-width: 650px) {
+  
+}
+
+/* For very small screens, like mobile phones */
+@media (max-width: 520px) {
+  .header {
+    flex-direction: column;
+  }
+  .weather-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .time-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
