@@ -1,16 +1,39 @@
 .forecast-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(5, 180px);
+  gap: 30px;
   font-family: 'Roboto', sans-serif;
   margin-top: 50px ;
   justify-content: center;
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90%; /* Adjust this value as needed */
+}
+/* Example of a media query for smaller screens */
+@media (max-width: 1100px) {
+  .forecast-container {
+    grid-template-columns: repeat(3, 180px); /* Switch to 3 columns */
+  }
+}
+
+/* Further adjustment for even smaller screens */
+@media (max-width: 650px) {
+  .forecast-container {
+    grid-template-columns: repeat(2, 180px); /* Switch to 2 columns */
+  }
+}
+
+/* For very small screens, like mobile phones */
+@media (max-width: 400px) {
+  .forecast-container {
+    grid-template-columns: 180px; /* Use a single column layout */
+  }
 }
 
 .single-forecast, .single-forecast-day {
   list-style-type: none;
-  width: 50px;
+  width: 60px;
   padding: 10px;
 }
 .single-forecast-day {
@@ -20,7 +43,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  
+  min-width: 60px;
 }
 .whole-forecast-container {
   background-color: white; /* Background color of the box */

@@ -60,10 +60,10 @@ const Forecast = () => {
               }
               <div className="min-max-container">
                 <li className="single-forecast">
-                  {Math.floor(dayData.min.toFixed(1))}°
+                  {Math.floor(dayData.min)}°
                 </li>
                 <li className="single-forecast">
-                  {Math.ceil(dayData.max.toFixed(1))}°
+                  {Math.ceil(dayData.max)}°
                 </li>
               </div>
             </div>
