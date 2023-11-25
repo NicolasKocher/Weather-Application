@@ -13,7 +13,8 @@ It is my first React Project and also my first time working with an API.
 ## Demo
 
 You can see a demo of the application here: 
-![Demo](/src/assets/demo.png)
+
+![Demo](/src/assets/ezgif.com-optimize.gif)
 
 ## Getting Started
 

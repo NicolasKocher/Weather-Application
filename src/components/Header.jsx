@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import "../styles/Header.css"
 import weatherImage from "../assets/weather-example.png"
 import useGeolocation from "./Geolocation";
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 
-function Header() {
+function Header({isDarkMode}) {
 
     // Aktuelles Datum und Uhrzeit erhalten
   const currentDateAndTime = new Date();
@@ -124,10 +125,11 @@ function Header() {
     }
 
     }, [])
-      
+    
+    const headerClass = isDarkMode ? 'header dark-mode' : 'header';
 
   return (
-    <header className="header">
+    <header className={headerClass}>
       <div className="temperature-container">
         {weatherIcon && <img src={weatherIcon} alt="Aktuelles Wetterbild" className="weather-image"/>}
         <h1>{temperatureCelsius}°C</h1>
