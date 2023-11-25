@@ -1,0 +1,23 @@
+/* Grundlegende Stile, die für beide Modi gelten */
+body {
+  font-family: 'Arial', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+.dark-mode {
+  color: grey;
+}
+/* Light Mode Stile */
+.light-mode {
+  background-color: white;
+  color: black;
+  /* Weitere Light Mode spezifische Stile */
+}
+
+/* Beispielsweise spezifische Stile für Überschriften, Links, etc., die im Dark Mode anders aussehen könnten */
+.dark-mode h1, .dark-mode h2, .dark-mode h3 {
+  color: #cccccc; /* Heller Grauton für Überschriften */
+}
+
+.dark-mode a {
+  color: #4e9af1; /* Helles Blau für Links */
+}

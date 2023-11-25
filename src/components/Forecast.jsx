@@ -1,8 +1,9 @@
 import "../styles/Forecast.css";
 import React, { useState, useEffect } from 'react';
 import useGeolocation from "./Geolocation";
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
-const Forecast = () => {
+const Forecast = ({isDarkMode}) => {
   const [forecast, setForecast] = useState([]);
 
   const { coords } = useGeolocation();
@@ -43,13 +44,14 @@ const Forecast = () => {
     }
   }, [coords]);
 
+  const forecastClass = isDarkMode ? 'whole-forecast-container-dark-mode' : 'whole-forecast-container';
   return (
     <div>
       <h1 className="weather-forecast-text">Wettervorhersage</h1>
       {forecast.length > 0 ? (
         <ul className="forecast-container">
           {forecast.map(([day, dayData], index) => (
-            <div key={index} className="whole-forecast-container">
+            <div key={index} className={forecastClass}>
               <li className="single-forecast-day">
                 {day}
               </li>
