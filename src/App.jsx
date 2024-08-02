@@ -22,12 +22,6 @@ function App() {
 
   return (
     <div className={`body ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-      <DarkModeSwitch
-        checked={isDarkMode}
-        onChange={toggleDarkMode}
-        size={40}
-        className="dark-mode-switch"
-      />
       <Header isDarkMode={isDarkMode} />
       <Forecast isDarkMode={isDarkMode} />
     </div>

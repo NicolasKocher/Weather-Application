@@ -2,6 +2,7 @@ import "../styles/Forecast.css";
 import React, { useState, useEffect } from 'react';
 import useGeolocation from "./Geolocation";
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
+import 'ldrs/ring'
 
 const Forecast = ({isDarkMode}) => {
   const [forecast, setForecast] = useState([]);
@@ -9,7 +10,7 @@ const Forecast = ({isDarkMode}) => {
   const { coords } = useGeolocation();
 
   useEffect(() => {
-    const apiKey = 'ac38eaac6b1fe46460c2813b9d7b964d'; // Ersetzen Sie 'YOUR_API_KEY' mit Ihrem API-Schlüssel
+    const apiKey = 'ac38eaac6b1fe46460c2813b9d7b964d'; 
     if (coords) {
       const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&appid=${apiKey}&units=metric`;
 
@@ -57,7 +58,7 @@ const Forecast = ({isDarkMode}) => {
               </li>
               {dayData.icon && 
                 <img 
-                  src={`http://openweathermap.org/img/wn/${dayData.icon}@2x.png`} 
+                  src={`https://openweathermap.org/img/wn/${dayData.icon}@2x.png`} 
                   alt="Wettericon"
                   className="weather-icon"
                 />
@@ -74,7 +75,9 @@ const Forecast = ({isDarkMode}) => {
           ))}
         </ul>
       ) : (
-        <p>Lade Wetterdaten...</p>
+        <div className="loading-container">
+          <l-ring size="60" color="coraL"></l-ring>
+        </div>
       )}
     </div>
   );
