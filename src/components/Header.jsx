@@ -101,7 +101,7 @@ function Header({isDarkMode}) {
           // Weather Icon
           let weatherIcon = data.weather[0].icon;
           weatherIcon = weatherIcon.slice(0, -1) + 'd'; // Ersetzt das letzte Zeichen durch 'd'
-          setWeatherIcon(`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`);
+          setWeatherIcon(`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`);
           console.log(weatherIcon);
     
           // Wind speed
