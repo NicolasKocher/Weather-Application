@@ -1,0 +1,162 @@
+.air-quality-container {
+  width: 95%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.air-quality-container.dark-mode {
+  background-color: rgba(44, 44, 46, 0.7);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.air-quality-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.air-quality-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--ios-blue);
+  letter-spacing: -0.5px;
+}
+
+.dark-mode .air-quality-title {
+  color: #ffffff;
+}
+
+.air-quality-badge {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.air-quality-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.air-quality-gauge {
+  height: 8px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.dark-mode .air-quality-gauge {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.air-quality-gauge-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s ease;
+}
+
+.air-quality-pollutants {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.pollutant-item {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.dark-mode .pollutant-item {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.pollutant-label {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.dark-mode .pollutant-label {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.pollutant-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+.dark-mode .pollutant-value {
+  color: #fff;
+}
+
+.air-quality-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .air-quality-container {
+    padding: 15px;
+  }
+
+  .air-quality-title {
+    font-size: 18px;
+  }
+
+  .air-quality-badge {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .pollutant-value {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .air-quality-container {
+    width: 98%;
+    padding: 12px;
+  }
+
+  .air-quality-title {
+    font-size: 16px;
+  }
+
+  .air-quality-pollutants {
+    gap: 10px;
+  }
+
+  .pollutant-item {
+    padding: 8px 12px;
+  }
+
+  .pollutant-label {
+    font-size: 11px;
+  }
+
+  .pollutant-value {
+    font-size: 13px;
+  }
+}

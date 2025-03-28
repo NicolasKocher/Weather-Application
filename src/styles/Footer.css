@@ -1,0 +1,141 @@
+.footer {
+  margin-top: 30px;
+  padding: 30px 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.footer.dark-mode {
+  background-color: rgba(30, 30, 30, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 20px;
+  padding-right: 20px;
+}
+
+.footer-heading {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ios-blue);
+  margin: 0 0 15px 0;
+  letter-spacing: -0.5px;
+}
+
+.footer.dark-mode .footer-heading {
+  color: #ffffff;
+}
+
+.footer-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
+.footer.dark-mode .footer-text {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.footer.dark-mode .footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.copyright {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+}
+
+.footer.dark-mode .copyright {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-link {
+  font-size: 13px;
+  color: var(--ios-blue);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.footer.dark-mode .footer-link {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 25px 15px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .footer-section {
+    padding-right: 0;
+  }
+
+  .footer-heading {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .footer-text {
+    font-size: 13px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .copyright {
+    font-size: 12px;
+  }
+
+  .footer-links {
+    gap: 15px;
+  }
+
+  .footer-link {
+    font-size: 12px;
+  }
+}

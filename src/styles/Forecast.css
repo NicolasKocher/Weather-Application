@@ -1,72 +1,259 @@
-.forecast-container {
-  display: grid;
-  grid-template-columns: repeat(5, 180px);
-  gap: 30px;
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  margin-top: 50px ;
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0;
-}
-/* Example of a media query for smaller screens */
-@media (max-width: 1100px) {
-  .forecast-container {
-    grid-template-columns: repeat(3, 180px); /* Switch to 3 columns */
-  }
+.forecast-section {
+  padding: 20px;
+  padding-top: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin-bottom: 20px;
 }
 
-/* Further adjustment for even smaller screens */
-@media (max-width: 650px) {
-  .forecast-container {
-    grid-template-columns: repeat(2, 180px); /* Switch to 2 columns */
-  }
-}
-
-/* For very small screens, like mobile phones */
-@media (max-width: 450px) {
-  .forecast-container {
-    grid-template-columns: 180px; /* Use a single column layout */
-  }
-}
-
-.single-forecast, .single-forecast-day {
-  list-style-type: none;
-  width: 30px;
-  padding: 10px;
-}
-.single-forecast-day {
-  font-weight: bold;
-  color: #EC6E4C;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
+.weather-forecast-text {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin: 20px 0;
+  color: var(--ios-blue);
   text-align: center;
-  min-width: 60px;
+  padding-left: 10px;
 }
-.whole-forecast-container {
-  background-color: white; /* Background color of the box */
-  box-shadow: 5px 3px 10px 0px rgba(0, 0, 0, 0.3); /* Shadow effect */
+
+.dark-mode .weather-forecast-text {
+  color: #ffffff;
+}
+
+.forecast-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 0;
-  border-radius: 5%;
+  margin: 0 auto;
+  width: 95%;
+  max-width: 800px;
+  list-style-type: none;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
-.min-max-container {
+
+.dark-mode .forecast-container {
+  background-color: rgba(44, 44, 46, 0.7);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.forecast-day-row {
   display: flex;
-  margin: 0;
-  justify-content: space-between;
-  text-align: center;
-  font-size: 18px;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
-.weather-forecast-text {
-  font-family: 'Roboto', sans-serif;
+
+.forecast-day-row:last-child {
+  border-bottom: none;
+}
+
+.dark-mode .forecast-day-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dark-mode .forecast-day-row:last-child {
+  border-bottom: none;
+}
+
+.forecast-day-row:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+  transform: translateX(5px);
+}
+
+.dark-mode .forecast-day-row:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.day-name {
+  flex: 1;
+  font-size: 17px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.dark-mode .day-name {
+  color: #ffffff;
+}
+
+.weather-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 15px;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.forecast-day-row:hover .weather-icon {
+  transform: scale(1.1);
+}
+
+.temperature-range {
+  display: flex;
+  align-items: center;
+  min-width: 100px;
+  justify-content: flex-end;
+}
+
+.min-temp,
+.max-temp {
+  font-size: 17px;
+  font-weight: 400;
+  transition: transform 0.3s ease;
+}
+
+.min-temp {
+  color: #555555;
+  margin-right: 15px;
+}
+
+.max-temp {
+  color: #000000;
+  font-weight: 600;
+  font-size: 19px;
+}
+
+.dark-mode .min-temp {
+  color: #a8a8a8;
+}
+
+.dark-mode .max-temp {
+  color: #ffffff;
+}
+
+.forecast-day-row:hover .max-temp {
+  transform: scale(1.1);
+}
+
+.temperature-bar-container {
+  flex: 1;
+  height: 6px;
+  background-color: rgba(200, 200, 200, 0.3);
+  border-radius: 3px;
+  margin: 0 20px;
+  position: relative;
+  max-width: 140px;
+  overflow: hidden;
+}
+
+.dark-mode .temperature-bar-container {
+  background-color: rgba(80, 80, 80, 0.3);
+}
+
+.temperature-bar {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: linear-gradient(to right, #63b8ff, #4a90e2, #007aff);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.dark-mode .temperature-bar {
+  background: linear-gradient(to right, #63b8ff, #4a90e2, #007aff);
+}
+
+.forecast-day-today {
+  background-color: rgba(var(--ios-blue-rgb), 0.05);
+}
+
+.dark-mode .forecast-day-today {
+  background-color: rgba(var(--ios-blue-rgb), 0.15);
+}
+
+.today-label {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--ios-blue);
+  letter-spacing: 0.5px;
+}
+
+.dark-mode .today-label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.loading-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center
+  height: 200px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .forecast-section {
+    padding: 15px;
+  }
+
+  .weather-forecast-text {
+    font-size: 20px;
+    margin: 15px 0;
+  }
+
+  .forecast-day-row {
+    padding: 16px;
+  }
+
+  .day-name {
+    font-size: 16px;
+  }
+
+  .min-temp,
+  .max-temp {
+    font-size: 16px;
+  }
+
+  .max-temp {
+    font-size: 18px;
+  }
+
+  .weather-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+  }
+
+  .temperature-bar-container {
+    margin: 0 10px;
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .forecast-section {
+    padding: 10px;
+  }
+
+  .weather-forecast-text {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  .forecast-container {
+    width: 98%;
+  }
+
+  .temperature-bar-container {
+    max-width: 60px;
+  }
+
+  .min-temp {
+    margin-right: 10px;
+  }
+
+  .temperature-range {
+    min-width: 80px;
+  }
 }
