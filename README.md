@@ -10,11 +10,9 @@ It is my first React Project and also my first time working with an API.
 - Responsive design for mobile and desktop devices.
 - Updates frequently
 
-## Demo
+## Live-Demo here:
 
-You can see a demo of the application here: 
-
-![Demo](/src/assets/ezgif.com-optimize.gif)
+https://weather-nk.netlify.app/
 
 ## Getting Started
 
